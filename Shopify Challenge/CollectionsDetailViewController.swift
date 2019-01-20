@@ -13,7 +13,8 @@ class CollectionsDetailViewController: UITableViewController {
     @IBOutlet private var xibView: XibView!
     @IBOutlet private var descriptionLabel: UILabel!
     
-    var collection: Collection?
+    var collection: CustomCollection?
+    var collectionImage: UIImage?
     
     var contentView: CollectionBannerView?
     
@@ -23,6 +24,11 @@ class CollectionsDetailViewController: UITableViewController {
         setupBannerView()
         title = collection?.title
         descriptionLabel.text = collection?.description
+        
+        if collection?.description == nil {
+            descriptionLabel.isHidden = true
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,7 +108,7 @@ class CollectionsDetailViewController: UITableViewController {
     private func setupBannerView() {
         contentView = xibView.contentView as? CollectionBannerView
         contentView?.titleText = collection?.title
-        contentView?.image = collection?.image
+        //contentView?.image = collection?.image
         contentView?.layer.addBorder(edge: .bottom,
                                      color: UIColor.black.withAlphaComponent(0.3),
                                      thickness: 0.5)

@@ -10,11 +10,15 @@ import UIKit
 
 class CollectionsTableViewController: UITableViewController {
     
+    lazy var downloadManager = DownloadManager()
+    
+    var collections = [CustomCollection]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let collectionTableViewCellNib = UINib(nibName: "CollectionTableViewCell", bundle: .main)
-        tableView.register(collectionTableViewCellNib, forCellReuseIdentifier: "CollectionCell")
+        registerTableViewCells()
+        reloadCollections()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,14 +35,15 @@ class CollectionsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1000
+        return collections.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath) as! CollectionTableViewCell
+        let collection = collections[indexPath.row]
         
         cell.bannerImage = indexPath.row % 2 == 0 ? UIImage(named: "Aerodynamic") : UIImage(named: "Durable")
-        cell.bannerText = "Demo Collection"
+        cell.bannerText = collection.title
         
         return cell
     }
@@ -46,10 +51,59 @@ class CollectionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "CollectionsDetail", bundle: .main)
         let controller = storyboard.instantiateInitialViewController() as! CollectionsDetailViewController
-        controller.collection = Collection(title: "Demo Collection",
-                                           description: "This is a super cool demo collection generated from tableView(_:didSelectRowAt:)", image: UIImage(named: "Aerodynamic"))
+        controller.collection = collections[indexPath.row]
 
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    // MARK: View Setup
+    private func registerTableViewCells() {
+        let collectionTableViewCellNib = UINib(nibName: "CollectionTableViewCell", bundle: .main)
+        tableView.register(collectionTableViewCellNib, forCellReuseIdentifier: "CollectionCell")
+    }
+    
+    private func reloadCollections() {
+        tableView.refreshControl?.beginRefreshing()
+        downloadManager.fetchCustomCollections { (updatedCollections, error) in
+            guard error == nil else {
+                self.alert(with: "Download Error", message: error!.localizedDescription)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.reloadTableView(with: updatedCollections!)
+            }
+        }
+    }
+    
+    private func reloadTableView(with newCollections: [CustomCollection]) {
+        tableView.performBatchUpdates({
+            if !collections.isEmpty {
+                let indexPathes = self.collections.enumerated().map({
+                    IndexPath(row: $0.offset, section: 0)
+                })
+                tableView.deleteRows(at: indexPathes, with: .automatic)
+            }
+            
+            collections = newCollections
+            tableView.refreshControl?.endRefreshing()
+            
+            let indexPathes = newCollections.enumerated().map({
+                IndexPath(row: $0.offset, section: 0)
+            })
+            tableView.insertRows(at: indexPathes, with: .automatic)
+        }, completion: nil)
+    }
+    
+    private func alert(with title: String, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(dismissAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 
 }
