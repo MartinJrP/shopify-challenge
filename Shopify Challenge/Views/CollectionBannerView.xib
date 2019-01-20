@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="Shopify_Challenge" customModuleProvider="target">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CollectionBannerView"/>
+            </userDefinedRuntimeAttributes>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CollectionBannerView" customModule="Shopify_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QXa-sB-Pp6">
+                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="QXa-sB-Pp6" secondAttribute="height" multiplier="1:1" id="yJ2-UR-9hu"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF0-p9-6Jh">
+                    <rect key="frame" x="287.5" y="75.5" width="75.5" height="29.5"/>
+                    <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="QXa-sB-Pp6" secondAttribute="bottom" id="7n5-Xw-mMe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xF0-p9-6Jh" secondAttribute="trailing" constant="12" id="Kk3-Wr-dgf"/>
+                <constraint firstItem="QXa-sB-Pp6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QdL-IJ-lgT"/>
+                <constraint firstItem="xF0-p9-6Jh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QXa-sB-Pp6" secondAttribute="trailing" constant="-20" id="Scg-bu-klJ"/>
+                <constraint firstItem="xF0-p9-6Jh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="teA-NP-ivR"/>
+                <constraint firstItem="QXa-sB-Pp6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xUr-tx-AM8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="QXa-sB-Pp6" id="ZeN-zq-Jms"/>
+                <outlet property="titleLabel" destination="xF0-p9-6Jh" id="VSh-Hh-e7J"/>
+            </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="57.571214392803604"/>
+        </view>
+    </objects>
+</document>

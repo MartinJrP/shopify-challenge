@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CollectionTableViewCell" customModule="Shopify_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBQ-H0-FBG">
+                    <rect key="frame" x="0.0" y="16" width="375" height="181"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="181" id="oGg-OO-mtc"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CollectionBannerView"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GBQ-H0-FBG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="kNe-WS-esX"/>
+                <constraint firstItem="GBQ-H0-FBG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qUT-qg-yew"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GBQ-H0-FBG" secondAttribute="trailing" id="vRQ-Px-ydN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="GBQ-H0-FBG" secondAttribute="bottom" id="y8q-h9-9ZO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="collectionBanner" destination="GBQ-H0-FBG" id="Yo0-Mr-A0G"/>
+            </connections>
+        </view>
+    </objects>
+</document>
