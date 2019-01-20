@@ -50,6 +50,9 @@
                     <navigationItem key="navigationItem" title="My Collections" id="dpn-fb-4NA"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="guv-f0-ggT">
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="reloadCollections" destination="yUf-qL-56d" eventType="valueChanged" id="APd-mc-dX9"/>
+                        </connections>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D9V-28-aZV" userLabel="First Responder" sceneMemberID="firstResponder"/>

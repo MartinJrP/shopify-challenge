@@ -62,16 +62,18 @@ class CollectionsTableViewController: UITableViewController {
         tableView.register(collectionTableViewCellNib, forCellReuseIdentifier: "CollectionCell")
     }
     
-    private func reloadCollections() {
+    @IBAction func reloadCollections() {
         tableView.refreshControl?.beginRefreshing()
         downloadManager.fetchCustomCollections { (updatedCollections, error) in
             guard error == nil else {
                 self.alert(with: "Download Error", message: error!.localizedDescription)
+                self.refreshControl?.endRefreshing()
                 return
             }
             
             DispatchQueue.main.async {
                 self.reloadTableView(with: updatedCollections!)
+                self.refreshControl?.endRefreshing()
             }
         }
     }
@@ -82,16 +84,15 @@ class CollectionsTableViewController: UITableViewController {
                 let indexPathes = self.collections.enumerated().map({
                     IndexPath(row: $0.offset, section: 0)
                 })
-                tableView.deleteRows(at: indexPathes, with: .automatic)
+                tableView.deleteRows(at: indexPathes, with: .fade)
             }
             
             collections = newCollections
-            tableView.refreshControl?.endRefreshing()
             
             let indexPathes = newCollections.enumerated().map({
                 IndexPath(row: $0.offset, section: 0)
             })
-            tableView.insertRows(at: indexPathes, with: .automatic)
+            tableView.insertRows(at: indexPathes, with: .fade)
         }, completion: nil)
     }
     
