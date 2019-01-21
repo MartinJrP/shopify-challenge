@@ -10,20 +10,18 @@ import UIKit
 
 class CollectionsTableViewController: UITableViewController {
     
-    let backgroundRefreshControl: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .whiteLarge)
-        view.color = .lightGray
-        
-        return view
-    }()
+    private lazy var downloadManager = DownloadManager()
+    internal var tasks = [URLSessionTask]()
     
-    lazy var downloadManager = DownloadManager()
-    
-    var collections = [CustomCollection]()
+    var collections = [CustomCollection]() {
+        didSet { initializeImagesArray() }
+    }
+    var images = [UIImage?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.prefetchDataSource = self
         registerTableViewCells()
         reloadCollections()
     }
@@ -49,8 +47,13 @@ class CollectionsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath) as! CollectionTableViewCell
         let collection = collections[indexPath.row]
         
-        cell.bannerImage = indexPath.row % 2 == 0 ? UIImage(named: "Aerodynamic") : UIImage(named: "Durable")
         cell.bannerText = collection.title
+        if let image = images[indexPath.row] {
+            cell.bannerImage = image
+        } else {
+            cell.bannerImage = nil
+            self.downloadImage(forItemAtIndex: indexPath.row)
+        }
         
         return cell
     }
@@ -60,6 +63,7 @@ class CollectionsTableViewController: UITableViewController {
         let controller = storyboard.instantiateInitialViewController() as! CollectionsDetailViewController
         controller.collection = collections[indexPath.row]
         controller.downloadManager = downloadManager
+        controller.collectionImage = images[indexPath.row]
 
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -68,6 +72,14 @@ class CollectionsTableViewController: UITableViewController {
     private func registerTableViewCells() {
         let collectionTableViewCellNib = UINib(nibName: "CollectionTableViewCell", bundle: .main)
         tableView.register(collectionTableViewCellNib, forCellReuseIdentifier: "CollectionCell")
+    }
+    
+    private func initializeImagesArray() {
+        var newImages = [UIImage?]()
+        for _ in collections {
+            newImages.append(nil)
+        }
+        images = newImages
     }
     
     @IBAction func reloadCollections() {

@@ -20,6 +20,7 @@
 		005577F021F04CAD009AFF88 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005577EF21F04CAD009AFF88 /* XibView.swift */; };
 		005680C921F002DC0054FE0A /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005680C821F002DC0054FE0A /* CollectionTableViewCell.swift */; };
 		005680CB21F003340054FE0A /* CollectionsMasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005680CA21F003340054FE0A /* CollectionsMasterTableViewController.swift */; };
+		00C638B421F5F9BA0093F290 /* CollectionsMasterPrefetchingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C638B321F5F9BA0093F290 /* CollectionsMasterPrefetchingDataSource.swift */; };
 		00D945C521F2A27F00E923CB /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D945C421F2A27F00E923CB /* CALayer+addBorder.swift */; };
 		00E1021621EFF6BF00C2B5E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E1021521EFF6BF00C2B5E1 /* AppDelegate.swift */; };
 		00E1021B21EFF6BF00C2B5E1 /* CollectionsMaster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00E1021921EFF6BF00C2B5E1 /* CollectionsMaster.storyboard */; };
@@ -54,6 +55,7 @@
 		005577EF21F04CAD009AFF88 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		005680C821F002DC0054FE0A /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		005680CA21F003340054FE0A /* CollectionsMasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsMasterTableViewController.swift; sourceTree = "<group>"; };
+		00C638B321F5F9BA0093F290 /* CollectionsMasterPrefetchingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsMasterPrefetchingDataSource.swift; sourceTree = "<group>"; };
 		00D945C421F2A27F00E923CB /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
 		00E1021221EFF6BF00C2B5E1 /* Shopify Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shopify Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E1021521EFF6BF00C2B5E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				00E1021521EFF6BF00C2B5E1 /* AppDelegate.swift */,
 				004C222721F551B4006AE396 /* AlertPresenting.swift */,
 				005680CA21F003340054FE0A /* CollectionsMasterTableViewController.swift */,
+				00C638B321F5F9BA0093F290 /* CollectionsMasterPrefetchingDataSource.swift */,
 				005577ED21F01643009AFF88 /* CollectionsDetailViewController.swift */,
 				00E1021C21EFF6C000C2B5E1 /* Assets.xcassets */,
 				00E1022121EFF6C000C2B5E1 /* Info.plist */,
@@ -312,6 +315,7 @@
 				005577F021F04CAD009AFF88 /* XibView.swift in Sources */,
 				004C221F21F52D8F006AE396 /* Collect.swift in Sources */,
 				005680C921F002DC0054FE0A /* CollectionTableViewCell.swift in Sources */,
+				00C638B421F5F9BA0093F290 /* CollectionsMasterPrefetchingDataSource.swift in Sources */,
 				004C221821F4D4F3006AE396 /* DownloadManager.swift in Sources */,
 				00D945C521F2A27F00E923CB /* CALayer+addBorder.swift in Sources */,
 				004C222821F551B4006AE396 /* AlertPresenting.swift in Sources */,

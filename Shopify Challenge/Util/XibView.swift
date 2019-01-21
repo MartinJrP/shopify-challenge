@@ -28,7 +28,6 @@ class XibView: UIView {
     
     func xibSetup() {
         guard let view = loadViewFromNib() else { return }
-        print("Sucessfully loaded \(nibName?.description)")
         view.frame = bounds
         view.autoresizingMask =
             [.flexibleWidth, .flexibleHeight]

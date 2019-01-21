@@ -12,12 +12,11 @@ class CollectionsDetailViewController: UITableViewController {
 
     @IBOutlet private var xibView: XibView!
     @IBOutlet private var descriptionLabel: UILabel!
-    //@IBOutlet private var descriptionLabelBottomConstraint: NSLayoutConstraint!
     
     var collection: CustomCollection?
     var collectionImage: UIImage?
     
-    var contentView: CollectionBannerView?
+    var bannerView: CollectionBannerView?
     
     var downloadManager: DownloadManager!
     var products = [Product]()
@@ -28,16 +27,10 @@ class CollectionsDetailViewController: UITableViewController {
         setupBannerView()
         title = collection?.title
         descriptionLabel.text = collection?.description
+        bannerView?.image = collectionImage
         
-        if collection?.description == nil || collection!.description == "" {
+        if collection?.description == nil {
             descriptionLabel.isHidden = true
-            for constraint in tableView.tableHeaderView!.constraints {
-                print("Constraints")
-                print(constraint)
-                if String(describing: type(of: constraint)) == "NSContentSizeLayoutConstraint" {
-                    print(constraint)
-                }
-            }
         }
         
         reloadProducts()
@@ -107,7 +100,7 @@ class CollectionsDetailViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let contentView = contentView, let navigationController = navigationController else { return }
+        guard let contentView = bannerView, let navigationController = navigationController else { return }
         
         let endBannerViewYCoordinate = contentView.frame.maxY - navigationController.navigationBar.frame.height - 16
         let bannerViewIsOnScreen = scrollView.contentOffset.y > endBannerViewYCoordinate
@@ -120,10 +113,10 @@ class CollectionsDetailViewController: UITableViewController {
     }
     
     private func setupBannerView() {
-        contentView = xibView.contentView as? CollectionBannerView
-        contentView?.titleText = collection?.title
+        bannerView = xibView.contentView as? CollectionBannerView
+        bannerView?.titleText = collection?.title
         //contentView?.image = collection?.image
-        contentView?.layer.addBorder(edge: .bottom,
+        bannerView?.layer.addBorder(edge: .bottom,
                                      color: UIColor.black.withAlphaComponent(0.3),
                                      thickness: 0.5)
     }
