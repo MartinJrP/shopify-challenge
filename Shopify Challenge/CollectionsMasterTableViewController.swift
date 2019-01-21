@@ -10,13 +10,20 @@ import UIKit
 
 class CollectionsTableViewController: UITableViewController {
     
+    let backgroundRefreshControl: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .whiteLarge)
+        view.color = .lightGray
+        
+        return view
+    }()
+    
     lazy var downloadManager = DownloadManager()
     
     var collections = [CustomCollection]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         registerTableViewCells()
         reloadCollections()
     }
@@ -52,6 +59,7 @@ class CollectionsTableViewController: UITableViewController {
         let storyboard = UIStoryboard(name: "CollectionsDetail", bundle: .main)
         let controller = storyboard.instantiateInitialViewController() as! CollectionsDetailViewController
         controller.collection = collections[indexPath.row]
+        controller.downloadManager = downloadManager
 
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -63,7 +71,10 @@ class CollectionsTableViewController: UITableViewController {
     }
     
     @IBAction func reloadCollections() {
-        tableView.refreshControl?.beginRefreshing()
+        // iOS Bug? Calling .beginRefreshing() causes so odd layout and spacing issues when using a large title.
+        // https://stackoverflow.com/questions/48347215/programmatic-beginrefreshing-on-ios11-has-problems-with-largetitles-mode
+        //tableView.refreshControl?.beginRefreshing()
+        
         downloadManager.fetchCustomCollections { (updatedCollections, error) in
             guard error == nil else {
                 self.alert(with: "Download Error", message: error!.localizedDescription)
@@ -94,17 +105,6 @@ class CollectionsTableViewController: UITableViewController {
             })
             tableView.insertRows(at: indexPathes, with: .fade)
         }, completion: nil)
-    }
-    
-    private func alert(with title: String, message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "OK", style: .default) { (_) in
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-        alertController.addAction(dismissAction)
-        
-        present(alertController, animated: true, completion: nil)
     }
 
 }

@@ -10,6 +10,11 @@
 		004C221821F4D4F3006AE396 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C221721F4D4F3006AE396 /* DownloadManager.swift */; };
 		004C221A21F4DDEE006AE396 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C221921F4DDEE006AE396 /* DecodingTests.swift */; };
 		004C221D21F50279006AE396 /* CustomCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C221C21F50279006AE396 /* CustomCollection.swift */; };
+		004C221F21F52D8F006AE396 /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C221E21F52D8F006AE396 /* Collect.swift */; };
+		004C222121F52FAD006AE396 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C222021F52FAD006AE396 /* Product.swift */; };
+		004C222321F532A9006AE396 /* APIValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C222221F532A9006AE396 /* APIValidator.swift */; };
+		004C222521F53DE1006AE396 /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = 004C222421F53DE1006AE396 /* products.json */; };
+		004C222821F551B4006AE396 /* AlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C222721F551B4006AE396 /* AlertPresenting.swift */; };
 		005577EA21F015D7009AFF88 /* CollectionsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005577E921F015D7009AFF88 /* CollectionsDetail.storyboard */; };
 		005577EE21F01644009AFF88 /* CollectionsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005577ED21F01643009AFF88 /* CollectionsDetailViewController.swift */; };
 		005577F021F04CAD009AFF88 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005577EF21F04CAD009AFF88 /* XibView.swift */; };
@@ -39,6 +44,11 @@
 		004C221721F4D4F3006AE396 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		004C221921F4DDEE006AE396 /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		004C221C21F50279006AE396 /* CustomCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollection.swift; sourceTree = "<group>"; };
+		004C221E21F52D8F006AE396 /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
+		004C222021F52FAD006AE396 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		004C222221F532A9006AE396 /* APIValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIValidator.swift; sourceTree = "<group>"; };
+		004C222421F53DE1006AE396 /* products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
+		004C222721F551B4006AE396 /* AlertPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenting.swift; sourceTree = "<group>"; };
 		005577E921F015D7009AFF88 /* CollectionsDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CollectionsDetail.storyboard; sourceTree = "<group>"; };
 		005577ED21F01643009AFF88 /* CollectionsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsDetailViewController.swift; sourceTree = "<group>"; };
 		005577EF21F04CAD009AFF88 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
@@ -84,18 +94,20 @@
 			path = Downloader;
 			sourceTree = "<group>";
 		};
-		004C221B21F5025A006AE396 /* Model */ = {
+		004C222621F53E02006AE396 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				004C222421F53DE1006AE396 /* products.json */,
 			);
-			name = Model;
-			path = "New Group";
+			path = TestData;
 			sourceTree = "<group>";
 		};
 		004DC8AA21F11331001622F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				004C221C21F50279006AE396 /* CustomCollection.swift */,
+				004C221E21F52D8F006AE396 /* Collect.swift */,
+				004C222021F52FAD006AE396 /* Product.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +127,7 @@
 			children = (
 				005577EF21F04CAD009AFF88 /* XibView.swift */,
 				00D945C421F2A27F00E923CB /* CALayer+addBorder.swift */,
+				004C222221F532A9006AE396 /* APIValidator.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -140,7 +153,6 @@
 		00E1021421EFF6BF00C2B5E1 /* Shopify Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				004C221B21F5025A006AE396 /* Model */,
 				004C221621F4D4DC006AE396 /* Downloader */,
 				00D945C121F29E1900E923CB /* Util */,
 				004DC8AA21F11331001622F1 /* Model */,
@@ -148,6 +160,7 @@
 				00E1023621EFFCCF00C2B5E1 /* Views */,
 				00E1023521EFFB3200C2B5E1 /* Cells */,
 				00E1021521EFF6BF00C2B5E1 /* AppDelegate.swift */,
+				004C222721F551B4006AE396 /* AlertPresenting.swift */,
 				005680CA21F003340054FE0A /* CollectionsMasterTableViewController.swift */,
 				005577ED21F01643009AFF88 /* CollectionsDetailViewController.swift */,
 				00E1021C21EFF6C000C2B5E1 /* Assets.xcassets */,
@@ -160,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				004C221921F4DDEE006AE396 /* DecodingTests.swift */,
+				004C222621F53E02006AE396 /* TestData */,
 				00E1022C21EFF6C100C2B5E1 /* Info.plist */,
 			);
 			path = "Shopify ChallengeTests";
@@ -277,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				004C222521F53DE1006AE396 /* products.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,14 +303,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E1023A21EFFED600C2B5E1 /* CollectionBannerView.swift in Sources */,
+				004C222321F532A9006AE396 /* APIValidator.swift in Sources */,
 				005680CB21F003340054FE0A /* CollectionsMasterTableViewController.swift in Sources */,
 				004C221D21F50279006AE396 /* CustomCollection.swift in Sources */,
 				005577EE21F01644009AFF88 /* CollectionsDetailViewController.swift in Sources */,
 				00E1021621EFF6BF00C2B5E1 /* AppDelegate.swift in Sources */,
+				004C222121F52FAD006AE396 /* Product.swift in Sources */,
 				005577F021F04CAD009AFF88 /* XibView.swift in Sources */,
+				004C221F21F52D8F006AE396 /* Collect.swift in Sources */,
 				005680C921F002DC0054FE0A /* CollectionTableViewCell.swift in Sources */,
 				004C221821F4D4F3006AE396 /* DownloadManager.swift in Sources */,
 				00D945C521F2A27F00E923CB /* CALayer+addBorder.swift in Sources */,
+				004C222821F551B4006AE396 /* AlertPresenting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

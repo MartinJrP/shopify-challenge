@@ -12,11 +12,15 @@ class CollectionsDetailViewController: UITableViewController {
 
     @IBOutlet private var xibView: XibView!
     @IBOutlet private var descriptionLabel: UILabel!
+    //@IBOutlet private var descriptionLabelBottomConstraint: NSLayoutConstraint!
     
     var collection: CustomCollection?
     var collectionImage: UIImage?
     
     var contentView: CollectionBannerView?
+    
+    var downloadManager: DownloadManager!
+    var products = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +29,18 @@ class CollectionsDetailViewController: UITableViewController {
         title = collection?.title
         descriptionLabel.text = collection?.description
         
-        if collection?.description == nil {
+        if collection?.description == nil || collection!.description == "" {
             descriptionLabel.isHidden = true
+            for constraint in tableView.tableHeaderView!.constraints {
+                print("Constraints")
+                print(constraint)
+                if String(describing: type(of: constraint)) == "NSContentSizeLayoutConstraint" {
+                    print(constraint)
+                }
+            }
         }
         
+        reloadProducts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,20 +76,22 @@ class CollectionsDetailViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return products.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubtitleProductCell", for: indexPath)
+        let product = products[indexPath.row]
 
-        cell.textLabel?.text = "Product Title"
+        cell.textLabel?.text = product.title
         
         let boldTextAttribute: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: cell.detailTextLabel!.font.pointSize)
         ]
         
         let quantityStatusText = NSAttributedString(string: "Available: ")
-        let quantityText = NSAttributedString(string: "55", attributes: boldTextAttribute)
+        let quantityText = NSAttributedString(string: product.totalQuantity.description,
+                                              attributes: boldTextAttribute)
         
         let quantityLabelText = NSMutableAttributedString()
         quantityLabelText.append(quantityStatusText)
@@ -112,5 +126,44 @@ class CollectionsDetailViewController: UITableViewController {
         contentView?.layer.addBorder(edge: .bottom,
                                      color: UIColor.black.withAlphaComponent(0.3),
                                      thickness: 0.5)
+    }
+    
+    @IBAction func reloadProducts() {
+        tableView.refreshControl?.beginRefreshing()
+        guard let collection = collection else {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        
+        downloadManager.fetchProducts(for: collection.id) { (updatedProducts, error) in
+            guard error == nil else {
+                self.alert(with: "Download Error", message: error!.localizedDescription)
+                self.refreshControl?.endRefreshing()
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.reloadTableView(with: updatedProducts!)
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
+    private func reloadTableView(with newProducts: [Product]) {
+        tableView.performBatchUpdates({
+            if !products.isEmpty {
+                let indexPathes = self.products.enumerated().map({
+                    IndexPath(row: $0.offset, section: 0)
+                })
+                tableView.deleteRows(at: indexPathes, with: .fade)
+            }
+            
+            products = newProducts
+            
+            let indexPathes = newProducts.enumerated().map({
+                IndexPath(row: $0.offset, section: 0)
+            })
+            tableView.insertRows(at: indexPathes, with: .fade)
+        }, completion: nil)
     }
 }

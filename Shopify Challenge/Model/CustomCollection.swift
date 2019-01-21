@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Represents a user's custom collection.
+/// - Note: This structures Codable conformance only extracts values needed by the app do maximize memory usage. It will not contain all the properties available from the Custom Collections API.
 struct CustomCollection: Codable {
     let id: Int
     let title: String
@@ -33,7 +35,7 @@ struct CustomCollection: Codable {
         }
         
         // Ensure updated date is less than published date as a means of integrity validation.
-        guard publishedDate < lastUpdatedDate else {
+        guard publishedDate <= lastUpdatedDate else {
             let context = DecodingError.Context(codingPath: [CodingKeys.publishedDate, CodingKeys.lastUpdatedDate], debugDescription: "Invalid dates.")
             throw DecodingError.dataCorrupted(context)
         }

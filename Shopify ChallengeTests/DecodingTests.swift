@@ -11,7 +11,7 @@ import XCTest
 
 class CustomCollectionDecodingTests: XCTestCase {
 
-    func testCanRawResponse() {
+    func testCanDecodeJSONResponse() {
         let customCollectionJSON = """
         {
             "custom_collections": [
@@ -63,4 +63,54 @@ class CustomCollectionDecodingTests: XCTestCase {
         }
     }
 
+}
+
+class CollectDecodingTests: XCTestCase {
+    
+    func testCanDecodeJSONResponse() {
+        let collectJSON = """
+        {
+            "collects": [
+                {
+                    "id": 10044875702328,
+                    "collection_id": 68424466488,
+                    "product_id": 2759162243,
+                    "featured": false,
+                    "created_at": "2018-12-17T13:50:35-05:00",
+                    "updated_at": "2018-12-17T13:50:35-05:00",
+                    "position": 1,
+                    "sort_value": "0000000001"
+                }
+            ]
+        }
+        """.data(using: .utf8)!
+        
+        let decoder = JSONDecoder()
+        XCTAssertNoThrow(try decoder.decode(CollectResponse.self, from: collectJSON))
+    }
+    
+}
+
+class ProductDecodingTests: XCTestCase {
+    
+    var testFileURL: URL!
+    var productsJSON: Data!
+    
+    override func setUp() {
+        testFileURL = Bundle(for: ProductDecodingTests.self).url(forResource: "products", withExtension: "json")
+        productsJSON = try! Data(contentsOf: testFileURL)
+    }
+    
+    func testCanDecodeJSONResponse() {
+        let decoder = JSONDecoder()
+        XCTAssertNoThrow(try decoder.decode(ProductResponse.self, from: productsJSON))
+    }
+    
+    func testCanCalculateTotalQuantityAcrossVariants() {
+        let decoder = JSONDecoder()
+        let result = try! decoder.decode(ProductResponse.self, from: productsJSON)
+        let product = result.products.first!
+        
+        XCTAssertEqual(product.totalQuantity, 157)
+    }
 }

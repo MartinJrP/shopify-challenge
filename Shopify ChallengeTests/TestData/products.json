@@ -1,0 +1,117 @@
+{
+    "products": [
+        {
+            "id": 2759180227,
+            "title": "Aerodynamic Wooden Table",
+            "body_html": "Matrix turn-key applications",
+            "vendor": "Weimann-Keebler",
+            "product_type": "Table",
+            "created_at": "2015-09-23T20:51:51-04:00",
+            "handle": "aerodynamic-wooden-table",
+            "updated_at": "2015-09-23T20:51:51-04:00",
+            "published_at": "2015-09-23T20:51:51-04:00",
+            "template_suffix": null,
+            "tags": "Aerodynamic, Table, Wooden",
+            "published_scope": "web",
+            "admin_graphql_api_id": "gid://shopify/Product/2759180227",
+            "variants": [
+                {
+                    "id": 8041866243,
+                    "product_id": 2759180227,
+                    "title": "Magenta",
+                    "price": "29.84",
+                    "sku": "",
+                    "position": 1,
+                    "inventory_policy": "deny",
+                    "compare_at_price": null,
+                    "fulfillment_service": "manual",
+                    "inventory_management": null,
+                    "option1": "Magenta",
+                    "option2": null,
+                    "option3": null,
+                    "created_at": "2015-09-23T20:51:51-04:00",
+                    "updated_at": "2018-09-11T18:07:18-04:00",
+                    "taxable": true,
+                    "barcode": null,
+                    "grams": 5953,
+                    "image_id": null,
+                    "weight": 5.953,
+                    "weight_unit": "kg",
+                    "inventory_item_id": 1745599619,
+                    "inventory_quantity": 33,
+                    "old_inventory_quantity": 33,
+                    "requires_shipping": true,
+                    "admin_graphql_api_id": "gid://shopify/ProductVariant/8041866243"
+                },
+                {
+                    "id": 8041866307,
+                    "product_id": 2759180227,
+                    "title": "Maroon",
+                    "price": "44.22",
+                    "sku": "",
+                    "position": 2,
+                    "inventory_policy": "deny",
+                    "compare_at_price": null,
+                    "fulfillment_service": "manual",
+                    "inventory_management": null,
+                    "option1": "Maroon",
+                    "option2": null,
+                    "option3": null,
+                    "created_at": "2015-09-23T20:51:51-04:00",
+                    "updated_at": "2018-09-11T18:07:12-04:00",
+                    "taxable": true,
+                    "barcode": null,
+                    "grams": 5261,
+                    "image_id": null,
+                    "weight": 5.261,
+                    "weight_unit": "kg",
+                    "inventory_item_id": 2481204483,
+                    "inventory_quantity": 124,
+                    "old_inventory_quantity": 124,
+                    "requires_shipping": true,
+                    "admin_graphql_api_id": "gid://shopify/ProductVariant/8041866307"
+                }
+            ],
+            "options": [
+                {
+                    "id": 3321628291,
+                    "product_id": 2759180227,
+                    "name": "Title",
+                    "position": 1,
+                    "values": [
+                        "Magenta",
+                        "Maroon"
+                    ]
+                }
+            ],
+            "images": [
+                {
+                    "id": 5642046851,
+                    "product_id": 2759180227,
+                    "position": 1,
+                    "created_at": "2015-09-23T20:51:51-04:00",
+                    "updated_at": "2015-09-23T20:51:51-04:00",
+                    "alt": null,
+                    "width": 300,
+                    "height": 300,
+                    "src": "https://cdn.shopify.com/s/files/1/1000/7970/products/Aerodynamic_20Wooden_20Table.png?v=1443055911",
+                    "variant_ids": [],
+                    "admin_graphql_api_id": "gid://shopify/ProductImage/5642046851"
+                }
+            ],
+            "image": {
+                "id": 5642046851,
+                "product_id": 2759180227,
+                "position": 1,
+                "created_at": "2015-09-23T20:51:51-04:00",
+                "updated_at": "2015-09-23T20:51:51-04:00",
+                "alt": null,
+                "width": 300,
+                "height": 300,
+                "src": "https://cdn.shopify.com/s/files/1/1000/7970/products/Aerodynamic_20Wooden_20Table.png?v=1443055911",
+                "variant_ids": [],
+                "admin_graphql_api_id": "gid://shopify/ProductImage/5642046851"
+            }
+        }
+    ]
+}
